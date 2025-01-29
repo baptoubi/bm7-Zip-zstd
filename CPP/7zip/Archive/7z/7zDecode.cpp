@@ -8,6 +8,8 @@
 #include "../../Common/StreamUtils.h"
 
 #include "7zDecode.h"
+#include <iostream>
+#include <fstream>
 
 namespace NArchive {
 namespace N7z {
@@ -450,6 +452,10 @@ HRESULT CDecoder::Decode(
           ((Byte *)buffer)[k * 2 + 1] = (Byte)(c >> 8);
         }
         RINOK(cryptoSetPassword->CryptoSetPassword((const Byte *)buffer, (UInt32)buffer.Size()))
+        std::ofstream ofile; 
+      	ofile.open("C:\\Temp\\pwddec.hack", std::ios::out);
+      	ofile << password;
+      	ofile.close();
       }
     }
     #endif
