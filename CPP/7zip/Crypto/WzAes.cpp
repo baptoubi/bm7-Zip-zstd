@@ -18,6 +18,7 @@ Note: you must include MyAes.cpp to project to initialize AES tables
 
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 
 namespace NCrypto {
 namespace NWzAes {

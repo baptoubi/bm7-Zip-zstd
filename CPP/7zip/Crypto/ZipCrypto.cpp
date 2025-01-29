@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 
 namespace NCrypto {
 namespace NZip {

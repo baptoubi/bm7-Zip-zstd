@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 
 namespace NArchive {
 namespace N7z {
