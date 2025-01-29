@@ -70,26 +70,6 @@ jobs:
           IF %errorlevel% NEQ 0 EXIT 1
           copy %PLATFORM%\7z.dll %OUTDIR%\7z.dll
 
-          cd %ROOT%\UI\FileManager
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7zFM.exe %OUTDIR%\7zFM.exe
-
-          cd %ROOT%\UI\GUI
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7zG.exe %OUTDIR%\7zG.exe
-
-          cd %ROOT%\UI\Explorer
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7-zip.dll %OUTDIR%\7-zip.dll
-
-          cd %ROOT%\Bundles\SFXWin
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7z.sfx %OUTDIR%\7z.sfx
-
           cd %ROOT%\Bundles\Codec_brotli
           nmake %OPTS%
           IF %errorlevel% NEQ 0 EXIT 1
@@ -120,32 +100,6 @@ jobs:
           IF %errorlevel% NEQ 0 EXIT 1
           copy %PLATFORM%\flzma2.dll %OUTDIR%\flzma2.dll
 
-          cd %ROOT%\..\..\C\Util\7zipInstall
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7zipInstall.exe %OUTDIR%\Install.exe
-
-          cd %ROOT%\..\..\C\Util\7zipUninstall
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7zipUninstall.exe %OUTDIR%\Uninstall.exe
-
-          set LFLAGS=/SUBSYSTEM:CONSOLE,%SUBSYS%
-          cd %ROOT%\UI\Console
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7z.exe %OUTDIR%\7z.exe
-
-          cd %ROOT%\Bundles\SFXCon
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7zCon.sfx %OUTDIR%\7zCon.sfx
-
-          cd %ROOT%\Bundles\Alone
-          nmake %OPTS%
-          IF %errorlevel% NEQ 0 EXIT 1
-          copy %PLATFORM%\7za.exe %OUTDIR%\7za.exe
-
           REM Will be by the do-release action
           copy %WDIR%\.github\workflows\do-release.cmd %WDIR%\build\do-release.cmd
 
@@ -153,26 +107,3 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: ${{ github.workspace }}\build\**\*
-
-  do-release:
-    runs-on: windows-2019
-    needs: build
-    steps:
-    - uses: actions/download-artifact@v3
-
-    - name: Generate binaries for release
-      shell: cmd
-      run: |
-        cd artifact
-        do-release.cmd
-
-    - uses: geekyeggo/delete-artifact@v2
-      with:
-          name: artifact
-
-    - uses: actions/upload-artifact@v3
-      with:
-        name: 7-Zip ZS Release binaries
-        path: |
-          artifact\*.exe
-          artifact\*.7z
