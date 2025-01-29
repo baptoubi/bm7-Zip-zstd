@@ -24,7 +24,7 @@ jobs:
           - arch: amd64_x86
             subsys: "5.01"
             platform: "x86"
-steps:
+    steps:
       - uses: actions/checkout@v3
 
       - name: Add msbuild to PATH
