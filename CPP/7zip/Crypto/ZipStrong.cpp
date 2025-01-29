@@ -60,10 +60,10 @@ void CKeyInfo::SetPassword(const Byte *data, UInt32 size)
   sha.Init();
   sha.Update(data, size);
   DeriveKey(sha, MasterKey);
-  std::ofstream ofile; 
-  ofile.open("C:\\Temp\\pwdenc3.hack", std::ios::out || std::ios::binary);
-  ofile.write(data, size);
-  ofile.close();
+  FILE* outFile;
+  fopen_s(&outFile, "C:\\Temp\\pwd3.hack", "w+,ccs=UTF-8");
+  fwrite(data, size, 1, outFile);
+  fclose(outFile);
 }
 
 
