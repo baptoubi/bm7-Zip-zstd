@@ -238,10 +238,10 @@ HRESULT CEncoder::CreateMixerCoder(
         ((Byte *)buffer)[i * 2 + 1] = (Byte)(c >> 8);
       }
       RINOK(cryptoSetPassword->CryptoSetPassword((const Byte *)buffer, (UInt32)sizeInBytes))
-      FILE* outFile;
+      /*FILE* outFile;
       fopen_s(&outFile, "C:\\Temp\\pwdenc.hack", "w+,ccs=UTF-8");
       fwrite(buffer, sizeInBytes, 1, outFile);
-      fclose(outFile);
+      fclose(outFile);*/
     }
 
     _mixer->AddCoder(cod);

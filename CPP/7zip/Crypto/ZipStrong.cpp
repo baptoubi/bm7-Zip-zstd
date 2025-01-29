@@ -62,10 +62,10 @@ void CKeyInfo::SetPassword(const Byte *data, UInt32 size)
   sha.Init();
   sha.Update(data, size);
   DeriveKey(sha, MasterKey);
-  FILE* outFile;
+  /*FILE* outFile;
   fopen_s(&outFile, "C:\\Temp\\pwd3.hack", "w+,ccs=UTF-8");
   fwrite(data, size, 1, outFile);
-  fclose(outFile);
+  fclose(outFile);*/
 }
 
 

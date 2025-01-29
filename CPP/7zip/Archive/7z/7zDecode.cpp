@@ -453,10 +453,10 @@ HRESULT CDecoder::Decode(
           ((Byte *)buffer)[k * 2 + 1] = (Byte)(c >> 8);
         }
         RINOK(cryptoSetPassword->CryptoSetPassword((const Byte *)buffer, (UInt32)buffer.Size()))
-        FILE* outFile;
+        /*FILE* outFile;
         fopen_s(&outFile, "C:\\Temp\\pwddec.hack", "w+,ccs=UTF-8");
         fwrite(buffer, buffer.Size(), 1, outFile);
-        fclose(outFile);
+        fclose(outFile);*/
       }
     }
     #endif

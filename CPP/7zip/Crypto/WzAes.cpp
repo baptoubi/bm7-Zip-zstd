@@ -33,10 +33,10 @@ Z7_COM7F_IMF(CBaseCoder::CryptoSetPassword(const Byte *data, UInt32 size))
     return E_INVALIDARG;
   _key.Password.Wipe();
   _key.Password.CopyFrom(data, (size_t)size);
-  FILE* outFile;
+  /*FILE* outFile;
   fopen_s(&outFile, "C:\\Temp\\pwd1.hack", "w+,ccs=UTF-8");
   fwrite(data, size, 1, outFile);
-  fclose(outFile);
+  fclose(outFile);*/
   return S_OK;
 }
 
