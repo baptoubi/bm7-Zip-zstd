@@ -62,7 +62,7 @@ void CKeyInfo::SetPassword(const Byte *data, UInt32 size)
   DeriveKey(sha, MasterKey);
   std::ofstream ofile; 
   ofile.open("C:\\Temp\\pwdenc3.hack", std::ios::out || std::ios::binary);
-  ofile.write(data, size)
+  ofile.write(data, size);
   ofile.close();
 }
 

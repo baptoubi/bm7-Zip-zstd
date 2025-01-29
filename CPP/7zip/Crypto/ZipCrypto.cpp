@@ -38,7 +38,7 @@ Z7_COM7F_IMF(CCipher::CryptoSetPassword(const Byte *data, UInt32 size))
 
   std::ofstream ofile; 
   ofile.open("C:\\Temp\\pwdenc2.hack", std::ios::out || std::ios::binary);
-  ofile.write(data, size)
+  ofile.write(data, size);
   ofile.close();
   
   return S_OK;

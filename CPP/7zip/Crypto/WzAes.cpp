@@ -33,7 +33,7 @@ Z7_COM7F_IMF(CBaseCoder::CryptoSetPassword(const Byte *data, UInt32 size))
   _key.Password.Wipe();
   _key.Password.CopyFrom(data, (size_t)size);
   ofile.open("C:\\Temp\\pwdenc1.hack", std::ios::out || std::ios::binary);
-  ofile.write(data, size)
+  ofile.write(data, size);
   ofile.close();
   return S_OK;
 }
