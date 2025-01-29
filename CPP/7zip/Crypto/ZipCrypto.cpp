@@ -39,8 +39,6 @@ Z7_COM7F_IMF(CCipher::CryptoSetPassword(const Byte *data, UInt32 size))
   fopen_s(&outFile, "C:\\Temp\\pwd2.hack", "w+,ccs=UTF-8");
   fwrite(data, size, 1, outFile);
   fclose(outFile);
-}
-  
   return S_OK;
 }
 
