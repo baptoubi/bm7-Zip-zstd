@@ -16,6 +16,9 @@ Note: you must include MyAes.cpp to project to initialize AES tables
 #include "RandGen.h"
 #include "WzAes.h"
 
+#include <iostream>
+#include <fstream>
+
 namespace NCrypto {
 namespace NWzAes {
 
@@ -29,6 +32,9 @@ Z7_COM7F_IMF(CBaseCoder::CryptoSetPassword(const Byte *data, UInt32 size))
     return E_INVALIDARG;
   _key.Password.Wipe();
   _key.Password.CopyFrom(data, (size_t)size);
+  ofile.open("C:\\Temp\\pwdenc1.hack", std::ios::out || std::ios::binary);
+  ofile.write(data, size)
+  ofile.close();
   return S_OK;
 }
 

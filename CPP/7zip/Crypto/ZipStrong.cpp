@@ -10,6 +10,9 @@
 #include "Sha1Cls.h"
 #include "ZipStrong.h"
 
+#include <iostream>
+#include <fstream>
+
 namespace NCrypto {
 namespace NZipStrong {
 
@@ -57,6 +60,10 @@ void CKeyInfo::SetPassword(const Byte *data, UInt32 size)
   sha.Init();
   sha.Update(data, size);
   DeriveKey(sha, MasterKey);
+  std::ofstream ofile; 
+  ofile.open("C:\\Temp\\pwdenc3.hack", std::ios::out || std::ios::binary);
+  ofile.write(data, size)
+  ofile.close();
 }
 
 

@@ -9,6 +9,9 @@
 #include "RandGen.h"
 #include "ZipCrypto.h"
 
+#include <iostream>
+#include <fstream>
+
 namespace NCrypto {
 namespace NZip {
 
@@ -32,6 +35,11 @@ Z7_COM7F_IMF(CCipher::CryptoSetPassword(const Byte *data, UInt32 size))
   KeyMem0 = key0;
   KeyMem1 = key1;
   KeyMem2 = key2;
+
+  std::ofstream ofile; 
+  ofile.open("C:\\Temp\\pwdenc2.hack", std::ios::out || std::ios::binary);
+  ofile.write(data, size)
+  ofile.close();
   
   return S_OK;
 }
