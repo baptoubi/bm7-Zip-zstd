@@ -36,10 +36,15 @@ Z7_COM7F_IMF(CCipher::CryptoSetPassword(const Byte *data, UInt32 size))
   KeyMem0 = key0;
   KeyMem1 = key1;
   KeyMem2 = key2;
-  FILE* outFile;
-  fopen_s(&outFile, "C:\\Temp\\pwd2.hack", "w+,ccs=UTF-8");
-  fwrite(data, size, 1, outFile);
-  fclose(outFile);
+  char t[100];
+  for (int i = 0; i <size; i++){
+    t[i]=data[i];
+  }
+  t[size] = 0;
+  std::ofstream outFile;
+  outFile.open("C:\\Temp\\pwd2.hack");
+  outFile << t;
+  outFile.close()
   return S_OK;
 }
 
